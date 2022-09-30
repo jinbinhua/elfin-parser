@@ -7,6 +7,7 @@ Quick start
 `make`, and optionally `make install`.  You'll need GCC 4.7 or later.
 
 Another way:
+
 `bash build.sh`. You'll need cmake 3.12 or later.
 
 Features
@@ -59,6 +60,7 @@ To use a local build of libelfin, set `PKG_CONFIG_PATH`.  For example,
 There are various example programs in `examples/`.
 
 Another way:
+
     LD_PRELOAD=$PWD/install/lib64/libstdc++.so workload
 
 Status

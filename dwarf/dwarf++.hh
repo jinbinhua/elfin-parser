@@ -1412,7 +1412,7 @@ public:
 class line_table::file_list : public path_list<file>
 {
 public:
-        file_list() =default;
+        file_list() = default;
 
         using path_list<file>::size;
         using path_list<file>::operator [];

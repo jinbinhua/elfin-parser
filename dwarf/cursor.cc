@@ -108,7 +108,7 @@ cursor::cstr(size_t *size_out)
 void
 cursor::skip_form(DW_FORM form)
 {
-	signal(SIGABRT, sigabrt_handler);
+        signal(SIGABRT, sigabrt_handler);
         signal(SIGSEGV, sigsegv_handler);
         section_offset tmp;
 
@@ -225,22 +225,22 @@ cursor::underflow()
 
 const char *dwarf_cursor::cstr(DW_FORM form)
 {
-	switch (form) {
-	case DW_FORM::string:
-	        return cstr();
-	case DW_FORM::strp:
-	        return cursor(m_dwarf.get_section(section_type::str), offset()).pos;
-	case DW_FORM::line_strp:
-	        return cursor(m_dwarf.get_section(section_type::line_str), offset()).pos;
-	case DW_FORM::strp_sup:
-	case DW_FORM::strx:
-	case DW_FORM::strx1:
-	case DW_FORM::strx2:
-	case DW_FORM::strx4:
-	        throw value_type_mismatch("not implemented for form " + to_string(form));
-	default:
-	        throw value_type_mismatch("cannot read " + to_string(form) + " as string");
-	}
+        switch (form) {
+        case DW_FORM::string:
+                return cstr();
+        case DW_FORM::strp:
+                return cursor(m_dwarf.get_section(section_type::str), offset()).pos;
+        case DW_FORM::line_strp:
+                return cursor(m_dwarf.get_section(section_type::line_str), offset()).pos;
+        case DW_FORM::strp_sup:
+        case DW_FORM::strx:
+        case DW_FORM::strx1:
+        case DW_FORM::strx2:
+        case DW_FORM::strx4:
+                throw value_type_mismatch("not implemented for form " + to_string(form));
+        default:
+                throw value_type_mismatch("cannot read " + to_string(form) + " as string");
+        }
 }
 
 DWARFPP_END_NAMESPACE

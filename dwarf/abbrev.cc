@@ -191,9 +191,9 @@ abbrev_entry::read(cursor *cur)
                 // Section 7.5.3 special cases
                 int64_t val = 0;
                 if (form == DW_FORM::implicit_const) {
-                	    val = cur->sleb128();
+                        val = cur->sleb128();
                 } else if (form == DW_FORM::indirect) {
-                	    continue;
+                        continue;
                 }
                 attributes.push_back(attribute_spec(name, form, val));
         }

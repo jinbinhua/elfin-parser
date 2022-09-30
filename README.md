@@ -6,6 +6,9 @@ Quick start
 
 `make`, and optionally `make install`.  You'll need GCC 4.7 or later.
 
+Another way:
+`bash build.sh`. You'll need cmake 3.12 or later.
+
 Features
 --------
 
@@ -32,6 +35,8 @@ Features
 
 * Large collection of type-safe DIE attribute fetchers.
 
+* Supports DWARF5, add signal handler and add function to convert function name to string.
+
 Non-features
 ------------
 
@@ -53,6 +58,9 @@ To use a local build of libelfin, set `PKG_CONFIG_PATH`.  For example,
 
 There are various example programs in `examples/`.
 
+Another way:
+    LD_PRELOAD=$PWD/install/lib64/libstdc++.so workload
+
 Status
 ------
 
@@ -60,3 +68,9 @@ Libelfin is a good start.  It's not production-ready and there are
 many parts of the DWARF specification it does not yet implement, but
 it's complete enough to be useful for many things and is a good deal
 more pleasant to use than every other debug info library I've tried.
+
+
+Thanks
+------
+
+Thanks to Austin T. Clements for contributing to the basic features of the software

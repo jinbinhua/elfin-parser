@@ -79,7 +79,7 @@ to_string(DW_TAG v)
         case DW_TAG::string_type: return "DW_TAG_string_type";
         case DW_TAG::structure_type: return "DW_TAG_structure_type";
         case DW_TAG::subroutine_type: return "DW_TAG_subroutine_type";
-        case DW_TAG::typedef_: return "DW_TAG_typedef_";
+        case DW_TAG::typedef_: return "DW_TAG_typedef";
         case DW_TAG::union_type: return "DW_TAG_union_type";
         case DW_TAG::unspecified_parameters: return "DW_TAG_unspecified_parameters";
         case DW_TAG::variant: return "DW_TAG_variant";
@@ -99,7 +99,7 @@ to_string(DW_TAG v)
         case DW_TAG::constant: return "DW_TAG_constant";
         case DW_TAG::enumerator: return "DW_TAG_enumerator";
         case DW_TAG::file_type: return "DW_TAG_file_type";
-        case DW_TAG::friend_: return "DW_TAG_friend_";
+        case DW_TAG::friend_: return "DW_TAG_friend";
         case DW_TAG::namelist: return "DW_TAG_namelist";
         case DW_TAG::namelist_item: return "DW_TAG_namelist_item";
         case DW_TAG::packed_type: return "DW_TAG_packed_type";
@@ -114,7 +114,7 @@ to_string(DW_TAG v)
         case DW_TAG::dwarf_procedure: return "DW_TAG_dwarf_procedure";
         case DW_TAG::restrict_type: return "DW_TAG_restrict_type";
         case DW_TAG::interface_type: return "DW_TAG_interface_type";
-        case DW_TAG::namespace_: return "DW_TAG_namespace_";
+        case DW_TAG::namespace_: return "DW_TAG_namespace";
         case DW_TAG::imported_module: return "DW_TAG_imported_module";
         case DW_TAG::unspecified_type: return "DW_TAG_unspecified_type";
         case DW_TAG::partial_unit: return "DW_TAG_partial_unit";
@@ -123,7 +123,7 @@ to_string(DW_TAG v)
         case DW_TAG::shared_type: return "DW_TAG_shared_type";
         case DW_TAG::type_unit: return "DW_TAG_type_unit";
         case DW_TAG::rvalue_reference_type: return "DW_TAG_rvalue_reference_type";
-        case DW_TAG::template_alias: return "DW_TAG_template_alias";     
+        case DW_TAG::template_alias: return "DW_TAG_template_alias";
         case DW_TAG::lo_user: break;
         case DW_TAG::hi_user: break;
         }
@@ -165,7 +165,7 @@ to_string(DW_AT v)
         case DW_AT::const_value: return "DW_AT_const_value";
         case DW_AT::containing_type: return "DW_AT_containing_type";
         case DW_AT::default_value: return "DW_AT_default_value";
-        case DW_AT::inline_: return "DW_AT_inline_";
+        case DW_AT::inline_: return "DW_AT_inline";
         case DW_AT::is_optional: return "DW_AT_is_optional";
         case DW_AT::lower_bound: return "DW_AT_lower_bound";
         case DW_AT::producer: return "DW_AT_producer";
@@ -190,7 +190,7 @@ to_string(DW_AT v)
         case DW_AT::encoding: return "DW_AT_encoding";
         case DW_AT::external: return "DW_AT_external";
         case DW_AT::frame_base: return "DW_AT_frame_base";
-        case DW_AT::friend_: return "DW_AT_friend_";
+        case DW_AT::friend_: return "DW_AT_friend";
         case DW_AT::identifier_case: return "DW_AT_identifier_case";
         case DW_AT::macro_info: return "DW_AT_macro_info";
         case DW_AT::namelist_item: return "DW_AT_namelist_item";
@@ -222,9 +222,9 @@ to_string(DW_AT v)
         case DW_AT::decimal_sign: return "DW_AT_decimal_sign";
         case DW_AT::digit_count: return "DW_AT_digit_count";
         case DW_AT::picture_string: return "DW_AT_picture_string";
-        case DW_AT::mutable_: return "DW_AT_mutable_";
+        case DW_AT::mutable_: return "DW_AT_mutable";
         case DW_AT::threads_scaled: return "DW_AT_threads_scaled";
-        case DW_AT::explicit_: return "DW_AT_explicit_";
+        case DW_AT::explicit_: return "DW_AT_explicit";
         case DW_AT::object_pointer: return "DW_AT_object_pointer";
         case DW_AT::endianity: return "DW_AT_endianity";
         case DW_AT::elemental: return "DW_AT_elemental";
@@ -317,20 +317,20 @@ to_string(DW_OP v)
         case DW_OP::rot: return "DW_OP_rot";
         case DW_OP::xderef: return "DW_OP_xderef";
         case DW_OP::abs: return "DW_OP_abs";
-        case DW_OP::and_: return "DW_OP_and_";
+        case DW_OP::and_: return "DW_OP_and";
         case DW_OP::div: return "DW_OP_div";
         case DW_OP::minus: return "DW_OP_minus";
         case DW_OP::mod: return "DW_OP_mod";
         case DW_OP::mul: return "DW_OP_mul";
         case DW_OP::neg: return "DW_OP_neg";
-        case DW_OP::not_: return "DW_OP_not_";
-        case DW_OP::or_: return "DW_OP_or_";
+        case DW_OP::not_: return "DW_OP_not";
+        case DW_OP::or_: return "DW_OP_or";
         case DW_OP::plus: return "DW_OP_plus";
         case DW_OP::plus_uconst: return "DW_OP_plus_uconst";
         case DW_OP::shl: return "DW_OP_shl";
         case DW_OP::shr: return "DW_OP_shr";
         case DW_OP::shra: return "DW_OP_shra";
-        case DW_OP::xor_: return "DW_OP_xor_";
+        case DW_OP::xor_: return "DW_OP_xor";
         case DW_OP::skip: return "DW_OP_skip";
         case DW_OP::bra: return "DW_OP_bra";
         case DW_OP::eq: return "DW_OP_eq";
@@ -374,19 +374,19 @@ to_string(DW_ATE v)
         case DW_ATE::address: return "DW_ATE_address";
         case DW_ATE::boolean: return "DW_ATE_boolean";
         case DW_ATE::complex_float: return "DW_ATE_complex_float";
-        case DW_ATE::float_: return "DW_ATE_data2";
-        case DW_ATE::signed_: return "DW_ATE_data4";
-        case DW_ATE::signed_char: return "DW_ATE_data8";
-        case DW_ATE::unsigned_: return "DW_ATE_string";
-        case DW_ATE::unsigned_char: return "DW_ATE_block";
-        case DW_ATE::imaginary_float: return "DW_ATE_block1";
-        case DW_ATE::packed_decimal: return "DW_ATE_data1";
-        case DW_ATE::numeric_string: return "DW_ATE_flag";
-        case DW_ATE::edited: return "DW_ATE_sdata";
-        case DW_ATE::signed_fixed: return "DW_ATE_strp";
-        case DW_ATE::unsigned_fixed: return "DW_ATE_udata";
-        case DW_ATE::decimal_float: return "DW_ATE_ref_addr";
-        case DW_ATE::UTF: return "DW_ATE_ref1";
+        case DW_ATE::float_: return "DW_ATE_float";
+        case DW_ATE::signed_: return "DW_ATE_signed";
+        case DW_ATE::signed_char: return "DW_ATE_signed_char";
+        case DW_ATE::unsigned_: return "DW_ATE_unsigned";
+        case DW_ATE::unsigned_char: return "DW_ATE_unsigned_char";
+        case DW_ATE::imaginary_float: return "DW_ATE_imaginary_float";
+        case DW_ATE::packed_decimal: return "DW_ATE_packed_decimal";
+        case DW_ATE::numeric_string: return "DW_ATE_numeric_string";
+        case DW_ATE::edited: return "DW_ATE_edited";
+        case DW_ATE::signed_fixed: return "DW_ATE_signed_fixed";
+        case DW_ATE::unsigned_fixed: return "DW_ATE_unsigned_fixed";
+        case DW_ATE::decimal_float: return "DW_ATE_decimal_float";
+        case DW_ATE::UTF: return "DW_ATE_UTF";
         case DW_ATE::lo_user: break;
         case DW_ATE::hi_user: break;
         }
@@ -397,7 +397,7 @@ std::string
 to_string(DW_DS v)
 {
         switch (v) {
-        case DW_DS::unsigned_: return "DW_DS_unsigned_";
+        case DW_DS::unsigned_: return "DW_DS_unsigned";
         case DW_DS::leading_overpunch: return "DW_DS_leading_overpunch";
         case DW_DS::trailing_overpunch: return "DW_DS_trailing_overpunch";
         case DW_DS::leading_separate: return "DW_DS_leading_separate";
@@ -410,7 +410,7 @@ std::string
 to_string(DW_END v)
 {
         switch (v) {
-        case DW_END::default_: return "DW_END_default_";
+        case DW_END::default_: return "DW_END_default";
         case DW_END::big: return "DW_END_big";
         case DW_END::little: return "DW_END_little";
         case DW_END::lo_user: break;
@@ -423,9 +423,9 @@ std::string
 to_string(DW_ACCESS v)
 {
         switch (v) {
-        case DW_ACCESS::public_: return "DW_ACCESS_public_";
-        case DW_ACCESS::protected_: return "DW_ACCESS_protected_";
-        case DW_ACCESS::private_: return "DW_ACCESS_private_";
+        case DW_ACCESS::public_: return "DW_ACCESS_public";
+        case DW_ACCESS::protected_: return "DW_ACCESS_protected";
+        case DW_ACCESS::private_: return "DW_ACCESS_private";
         }
         return "(DW_ACCESS)0x" + to_hex((int)v);
 }
@@ -446,7 +446,7 @@ to_string(DW_VIRTUALITY v)
 {
         switch (v) {
         case DW_VIRTUALITY::none: return "DW_VIRTUALITY_none";
-        case DW_VIRTUALITY::virtual_: return "DW_VIRTUALITY_virtual_";
+        case DW_VIRTUALITY::virtual_: return "DW_VIRTUALITY_virtual";
         case DW_VIRTUALITY::pure_virtual: return "DW_VIRTUALITY_pure_virtual";
         }
         return "(DW_VIRTUALITY)0x" + to_hex((int)v);

@@ -13,7 +13,7 @@
 #include <type_traits>
 #include <unordered_map>
 #include <vector>
-#include <string>
+#include <string.h>
 
 DWARFPP_BEGIN_NAMESPACE
 
@@ -151,54 +151,54 @@ struct cursor
         T fixed(DW_FORM form)
         {
                 switch (form) {
-                case DW_FORM:addr:
+                case DW_FORM::addr:
                         return address();
 
-                case DW_FORM:block1:
-                case DW_FORM:block2:
-                case DW_FORM:block4:
+                case DW_FORM::block1:
+                case DW_FORM::block2:
+                case DW_FORM::block4:
                         return fixed_block<T>(form);
-                case DW_FORM:data1:
-                case DW_FORM:ref1:
-                case DW_FORM:flag:
-                case DW_FORM:strx1:
-                case DW_FORM:addrx1:
+                case DW_FORM::data1:
+                case DW_FORM::ref1:
+                case DW_FORM::flag:
+                case DW_FORM::strx1:
+                case DW_FORM::addrx1:
                         return fixed<uint8_t>();
-                case DW_FORM:data2:
-                case DW_FORM:ref2:
-                case DW_FORM:strx2:
-                case DW_FORM:addrx2:
+                case DW_FORM::data2:
+                case DW_FORM::ref2:
+                case DW_FORM::strx2:
+                case DW_FORM::addrx2:
                         return fixed<uint16_t>();
-                case DW_FORM:data4:
-                case DW_FORM:ref4:
-                case DW_FORM:strx4:
-                case DW_FORM:ref_sup4:
-                case DW_FORM:addrx4:
+                case DW_FORM::data4:
+                case DW_FORM::ref4:
+                case DW_FORM::strx4:
+                case DW_FORM::ref_sup4:
+                case DW_FORM::addrx4:
                         return fixed<uint32_t>();
-                case DW_FORM:data8:
-                case DW_FORM:ref8:
-                case DW_FORM:ref_sig8:
-                case DW_FORM:ref_sup8:
+                case DW_FORM::data8:
+                case DW_FORM::ref8:
+                case DW_FORM::ref_sig8:
+                case DW_FORM::ref_sup8:
                         return fixed<uint64_t>();
-                case DW_FORM:sdata:
-                case DW_FORM:implicit_const:
+                case DW_FORM::sdata:
+                case DW_FORM::implicit_const:
                         return sleb128();
-                case DW_FORM:loclistx:
-                case DW_FORM:udata:
-                case DW_FORM:ref_udata:
-                case DW_FORM:indirect:
-                case DW_FORM:strx:
-                case DW_FORM:addrx:
+                case DW_FORM::loclistx:
+                case DW_FORM::udata:
+                case DW_FORM::ref_udata:
+                case DW_FORM::indirect:
+                case DW_FORM::strx:
+                case DW_FORM::addrx:
                         return uleb128();
-                case DW_FORM:strp:
-                case DW_FORM:sec_offset:
-                case DW_FORM:ref_addr:
-                case DW_FORM:line_strp:
-                case DW_FORM:strp_sup:
+                case DW_FORM::strp:
+                case DW_FORM::sec_offset:
+                case DW_FORM::ref_addr:
+                case DW_FORM::line_strp:
+                case DW_FORM::strp_sup:
                         return offset();
-                
-                case DW_FORM:strx3:
-                case DW_FORM:addrx3:
+
+                case DW_FORM::strx3:
+                case DW_FORM::addrx3:
                 default:
                         throw format_error("not implemented for " + to_string(form));
                 }
@@ -276,7 +276,7 @@ struct cursor
 private:
         cursor(const std::shared_ptr<section> sec, const char *pos)
                 : sec(sec), pos(pos) { }
-        
+
         template<typename T>
         T fixed_block(DW_FORM form)
         {
@@ -320,7 +320,7 @@ public:
 
 protected:
         const dwarf &m_dwarf;
-}
+};
 
 /**
  * An attribute specification in an abbrev.

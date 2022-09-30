@@ -108,8 +108,8 @@ cursor::cstr(size_t *size_out)
 void
 cursor::skip_form(DW_FORM form)
 {
-	    signal(SIGABRT, sigabrt_handler);
-		signal(SIGSEGV, sigsegv_handler);
+	signal(SIGABRT, sigabrt_handler);
+        signal(SIGSEGV, sigsegv_handler);
         section_offset tmp;
 
         // Section 7.5.4
@@ -120,8 +120,8 @@ cursor::skip_form(DW_FORM form)
         case DW_FORM::sec_offset:
         case DW_FORM::ref_addr:
         case DW_FORM::strp:
-		case DW_FORM::line_strp:
-		case DW_FORM::strp_sup:
+        case DW_FORM::line_strp:
+        case DW_FORM::strp_sup:
                 switch (sec->fmt) {
                 case format::dwarf32:
                         pos += 4;
@@ -159,33 +159,33 @@ cursor::skip_form(DW_FORM form)
         case DW_FORM::flag:
         case DW_FORM::data1:
         case DW_FORM::ref1:
-		case DW_FORM::strx1:
-		case DW_FORM::addrx1:
+        case DW_FORM::strx1:
+        case DW_FORM::addrx1:
                 pos += 1;
                 break;
         case DW_FORM::data2:
         case DW_FORM::ref2:
-		case DW_FORM::strx2:
-		case DW_FORM::addrx2:
+        case DW_FORM::strx2:
+        case DW_FORM::addrx2:
                 pos += 2;
                 break;
-		case DW_FORM::strx3:
-		case DW_FORM::addrx3:
+        case DW_FORM::strx3:
+        case DW_FORM::addrx3:
                 pos += 3;
                 break;
         case DW_FORM::data4:
         case DW_FORM::ref4:
-		case DW_FORM::strx4:
-		case DW_FORM::addrx4:
-		case DW_FORM::ref_sup4:
+        case DW_FORM::strx4:
+        case DW_FORM::addrx4:
+        case DW_FORM::ref_sup4:
                 pos += 4;
                 break;
         case DW_FORM::data8:
         case DW_FORM::ref_sig8:
-		case DW_FORM::ref_sup8:
+        case DW_FORM::ref_sup8:
                 pos += 8;
                 break;
-		case DW_FORM::data16:
+        case DW_FORM::data16:
                 pos += 16;
                 break;
 
@@ -193,11 +193,11 @@ cursor::skip_form(DW_FORM form)
         case DW_FORM::sdata:
         case DW_FORM::udata:
         case DW_FORM::ref_udata:
-		case DW_FORM::strx:
-		case DW_FORM::addrx:
-		case DW_FORM::implicit_const:
-		case DW_FORM::loclistx:
-		case DW_FORM::rnglistx:
+        case DW_FORM::strx:
+        case DW_FORM::addrx:
+        case DW_FORM::implicit_const:
+        case DW_FORM::loclistx:
+        case DW_FORM::rnglistx:
                 while (pos < sec->end && (*(uint8_t*)pos & 0x80))
                         pos++;
                 pos++;
@@ -237,7 +237,7 @@ const char *dwarf_cursor::cstr(DW_FORM form)
 	case DW_FORM::strx1:
 	case DW_FORM::strx2:
 	case DW_FORM::strx4:
-	        throw value_type_mismatch("not implemented for from " + to_string(form));
+	        throw value_type_mismatch("not implemented for form " + to_string(form));
 	default:
 	        throw value_type_mismatch("cannot read " + to_string(form) + " as string");
 	}

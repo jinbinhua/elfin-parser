@@ -13,11 +13,11 @@ resolve_type(DW_AT name, DW_FORM form)
 {
         switch (form) {
         case DW_FORM::addr:
-		case DW_FORM::addrx:
-		case DW_FORM::addrx1:
-		case DW_FORM::addrx2:
-		case DW_FORM::addrx3:
-		case DW_FORM::addrx4:
+        case DW_FORM::addrx:
+        case DW_FORM::addrx1:
+        case DW_FORM::addrx2:
+        case DW_FORM::addrx3:
+        case DW_FORM::addrx4:
                 return value::type::address;
 
         case DW_FORM::block:
@@ -83,11 +83,11 @@ resolve_type(DW_AT name, DW_FORM form)
                 }
         case DW_FORM::data1:
         case DW_FORM::data2:
-		case DW_FORM::data16:
+        case DW_FORM::data16:
         case DW_FORM::udata:
                 return value::type::uconstant;
         case DW_FORM::sdata:
-		case DW_FORM::implicit_const:
+        case DW_FORM::implicit_const:
                 return value::type::sconstant;
 
         case DW_FORM::exprloc:
@@ -104,15 +104,15 @@ resolve_type(DW_AT name, DW_FORM form)
         case DW_FORM::ref_addr:
         case DW_FORM::ref_sig8:
         case DW_FORM::ref_udata:
-		case DW_FORM::ref_sup4:
-		case DW_FORM::ref_sup8:
-		case DW_FORM::strx:
-		case DW_FORM::strp_sup:
-		case DW_FORM::line_strp:
-		case DW_FORM::strx1:
-		case DW_FORM::strx2:
-		case DW_FORM::strx3:
-		case DW_FORM::strx4:
+        case DW_FORM::ref_sup4:
+        case DW_FORM::ref_sup8:
+        case DW_FORM::strx:
+        case DW_FORM::strp_sup:
+        case DW_FORM::line_strp:
+        case DW_FORM::strx1:
+        case DW_FORM::strx2:
+        case DW_FORM::strx3:
+        case DW_FORM::strx4:
                 return value::type::reference;
 
         case DW_FORM::string:
@@ -157,11 +157,11 @@ resolve_type(DW_AT name, DW_FORM form)
                                            to_string(name));
                 }
 
-		case DW_FORM::loclistx:
-		        return value::type::loclist;
+        case DW_FORM::loclistx:
+                return value::type::loclist;
 
         case DW_FORM::rnglistx:
-		        return value::type::rangelist;
+                return value::type::rangelist;
         }
         throw format_error("unknown attribute form " + to_string(form));
 }
@@ -188,13 +188,13 @@ abbrev_entry::read(cursor *cur)
                 DW_FORM form = (DW_FORM)cur->uleb128();
                 if (name == (DW_AT)0 && form == (DW_FORM)0)
                         break;
-				// Section 7.5.3 special cases
-				int64_t val = 0;
-				if (form == DW_FORM::implicit_const) {
-					    val = cur->sleb128();
-				} else if (form == DW_FORM::indirect) {
-					    continue;
-				}
+                // Section 7.5.3 special cases
+                int64_t val = 0;
+                if (form == DW_FORM::implicit_const) {
+                	    val = cur->sleb128();
+                } else if (form == DW_FORM::indirect) {
+                	    continue;
+                }
                 attributes.push_back(attribute_spec(name, form, val));
         }
         attributes.shrink_to_fit();

@@ -26,14 +26,14 @@ static const int opcode_lengths[] = {
 
 line_table::format_entry::format_entry(cursor &cur)
         : m_type(static_cast<DW_LNCT>(cur.uleb128())),
-        m_form(static_cast<DW_LNCT>(cur.uleb128()))
+        m_form(static_cast<DW_FORM>(cur.uleb128()))
 {
 }
 
 void line_table::directory_format::init(cursor &cur)
 {
         auto count = cur.fixed<ubyte>();
-        if (count !=  1) {
+        if (count != 1) {
                 // to caught usecase for directory with optional parameters
                 throw format_error("unexpected directory format entry count " + ::std::to_string(count));
         }
@@ -53,7 +53,7 @@ void line_table::directory_format::init(cursor &cur)
         case DW_FORM::strx4:
                 break;
         default:
-               throw format_error("unexpected directory format entry form " + to_string(entry.form())); 
+                throw format_error("unexpected directory format entry form " + to_string(entry.form()));
         }
 }
 
@@ -61,7 +61,7 @@ void line_table::file_format::init(cursor &cur)
 {
         auto count = cur.fixed<ubyte>();
         if (!count) {
-                throw format_error("unexpected directory format entry count 0");
+                throw format_error("unexpected file format entry count 0");
         }
         for (auto i = 0; i < count; ++i) {
                 auto &entry = emplace_back(cur);
@@ -83,7 +83,7 @@ void line_table::file_format::init(cursor &cur)
                                 break;
                         }
                         break;
-                case DW_LNCT::directory_index
+                case DW_LNCT::directory_index:
                         switch (entry.form()) {
                         case DW_FORM::data1:
                         case DW_FORM::data2:
@@ -124,7 +124,7 @@ void line_table::file_format::init(cursor &cur)
                         break;
                 }
                 if (bFail) {
-                        throw format_error("unexpected file format entry type " + to_string(entry.type()) + " form " + to_string(entry.form())); 
+                        throw format_error("unexpected file format entry type " + to_string(entry.type()) + " form " + to_string(entry.form()));
                 }
         }
 }
@@ -144,12 +144,12 @@ line_table::directory::directory(dwarf_cursor &cur, const format &format)
 line_table::directory::directory(dwarf_cursor &cur, const ::std::string &comp_dir)
 {
         cur.string(m_path);
-        vaildate_path(comp_dir);
+        validate_path(comp_dir);
 }
 
 line_table::directory::directory(const ::std::string &path, const ::std::string &comp_dir) : m_path(path)
 {
-        vaildate_path(comp_dir);
+        validate_path(comp_dir);
 }
 
 const std::string &line_table::directory::path() const
@@ -202,7 +202,7 @@ line_table::file::file(dwarf_cursor &cur, const format &format)
 line_table::file::file(const ::std::string &file, const ::std::string &comp_dir)
 {
         m_path = file;
-        validate(comp_dir);
+        validate_path(comp_dir);
 }
 
 line_table::file::file(const ::std::string &file)
@@ -215,7 +215,7 @@ line_table::file::file(dwarf_cursor &cur, const ::std::string &comp_dir)
 {
         cur.string(m_path);
         validate_path(comp_dir);
-        m_directory_index = cur.usleb128();
+        m_directory_index = cur.uleb128();
         m_time = cur.uleb128();
         m_length = cur.uleb128();
 }
@@ -244,7 +244,7 @@ void line_table::path_list<ItemT>::init(dwarf_cursor &cur, const format &format)
         if (!count) {
                 throw format_error("unexpected path count 0");
         }
-        for (auto i = 0;i < count; ++i) {
+        for (auto i = 0; i < count; ++i) {
                 emplace_back(cur, format);
         }
 }
@@ -258,13 +258,13 @@ void line_table::path_list<ItemT>::init(dwarf_cursor &cur, const ::std::string &
         ++cur.pos;
 }
 
-void line_table:directory_list::init(dwarf_cursor &cur, const ::std::string &comp_dir)
+void line_table::directory_list::init(dwarf_cursor &cur, const ::std::string &comp_dir)
 {
         emplace_back(comp_dir);
         path_list<directory>::init(cur, comp_dir);
 }
 
-void line_table:file_list::init(dwarf_cursor &cur, const ::std::string &comp_dir, const ::std::string &cu_name)
+void line_table::file_list::init(dwarf_cursor &cur, const ::std::string &comp_dir, const ::std::string &cu_name)
 {
         emplace_back(cu_name, comp_dir);
         path_list<file>::init(cur, comp_dir);
@@ -373,7 +373,7 @@ line_table::line_table(const compilation_unit &cu, const shared_ptr<section> &se
                 m->m_file_format.init(cur);
                 m->m_files.init(cur, m->m_file_format);
         } else {
-                ayto comp_dir =cu.comp_dir();
+                auto comp_dir =cu.comp_dir();
                 m->m_directories.init(cur, comp_dir);
                 m->m_files.init(cur, comp_dir, cu.name());
         }

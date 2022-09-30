@@ -160,7 +160,7 @@ value::as_rangelist() const
 }
 
 bool
-value::li_vaild_rangelist() const
+value::is_valid_rangelist() const
 {
         return cu->get_dwarf().has_section(section_type::ranges);
 }
@@ -298,6 +298,8 @@ value::resolve_indirect(DW_AT name)
 string
 to_string(const value &v)
 {
+        signal(SIGABRT, sigabrt_handler);
+        signal(SIGSEGV, sigsegv_handler);
         switch (v.get_type()) {
         case value::type::invalid:
                 return "<invalid value type>";

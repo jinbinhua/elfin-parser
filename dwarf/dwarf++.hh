@@ -1259,7 +1259,7 @@ public:
 };
 
 /**
- * An format entry in a line table.
+ * A format entry in a line table.
  */
 class line_table::format_entry
 {
@@ -1278,7 +1278,7 @@ public:
 
 protected:
         DW_LNCT m_type;
-        DW_FORm m_form;
+        DW_FORM m_form;
 };
 
 /**
@@ -1364,13 +1364,13 @@ protected:
         uint64_t m_directory_index;
 
         /**
-         * The last modification time of this souce file in an
-         * implementation-defined encoding or 0 in unknown.
+         * The last modification time of this source file in an
+         * implementation-defined encoding or 0 if unknown.
          */
         uint64_t m_time = 0;
 
         /**
-         * The size in bytes of this source file or 0 in unknown.
+         * The size in bytes of this source file or 0 if unknown.
          */
         uint64_t m_length = 0;
 
@@ -1400,7 +1400,7 @@ protected:
 class line_table::directory_list : public path_list<directory>
 {
 public:
-        directory_list() =default;
+        directory_list() = default;
 
         using path_list<directory>::init;
         void init(dwarf_cursor &cur, const ::std::string &comp_dir);
@@ -1418,7 +1418,7 @@ public:
         using path_list<file>::operator [];
 
         using path_list<file>::init;
-        directory(dwarf_cursor &cur, const ::std::string &comp_dir, const ::std::string &cu_name); // DWARF4
+        void init(dwarf_cursor &cur, const ::std::string &comp_dir, const ::std::string &cu_name); // DWARF4
 };
 
 /**

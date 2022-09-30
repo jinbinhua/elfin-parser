@@ -112,11 +112,11 @@ dwarf::get_section(section_type type) const
                 return m->sec_info;
         if (type == section_type::abbrev)
                 return m->sec_abbrev;
-        
+
         if (!has_section(type))
                 throw format_error(std::string(elf::section_type_to_name(type))
                                    + " section missing");
-        
+
         return m->sections[type];
 }
 
@@ -329,7 +329,7 @@ done:
 {
         const die &d = root();
         ::std::string comp_dir = d.has(DW_AT::comp_dir) ? at_comp_dir(d) : "";
-        if (comp_dir.empty() || comp_dir.back()) {
+        if (comp_dir.empty() || comp_dir.back() == '/') {
                 return comp_dir;
         }
         return comp_dir + '/';

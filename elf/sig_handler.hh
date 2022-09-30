@@ -5,8 +5,8 @@
 #include <iostream>
 #include <signal.h>
 
-void siabrt_handler(int signal_num);
+void sigabrt_handler(int signal_num);
 
-void sisegv_handler(int signal_num);
+void sigsegv_handler(int signal_num);
 
 #endif

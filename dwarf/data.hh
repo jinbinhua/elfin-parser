@@ -253,24 +253,24 @@ enum class DW_FORM
         ref_sig8     = 0x20,    // reference
 
         // DWARF 5
-        strx = 0x1a, //string
+        strx = 0x1a, // string
         addrx = 0x1b, //address
-        ref_sup4 = 0x1c, //reference
-        strp_sup = 0x1d, //string
-        data16 = 0x1e, //constant
-        line_strp = 0x1f, //string
-        implicit_const = 0x21, //constant
-        loclistx = 0x22, //loclist
-        rnglistx = 0x23, //rnglist
-        ref_sup8 = 0x24, //reference
-        strx1 = 0x25, //string
-        strx2 = 0x26, //string
-        strx3 = 0x27, //string
-        strx4 = 0x28, //string
-        addrx1 = 0x29, //address
-        addrx2 = 0x2a, //address
-        addrx3 = 0x2b, //address
-        addrx4 = 0x2c, //address
+        ref_sup4 = 0x1c, // reference
+        strp_sup = 0x1d, // string
+        data16 = 0x1e, // constant
+        line_strp = 0x1f, // string
+        implicit_const = 0x21, // constant
+        loclistx = 0x22, // loclist
+        rnglistx = 0x23, // rnglist
+        ref_sup8 = 0x24, // reference
+        strx1 = 0x25, // string
+        strx2 = 0x26, // string
+        strx3 = 0x27, // string
+        strx4 = 0x28, // string
+        addrx1 = 0x29, // address
+        addrx2 = 0x2a, // address
+        addrx3 = 0x2b, // address
+        addrx4 = 0x2c, // address
 };
 
 std::string
@@ -585,7 +585,7 @@ enum class DW_LNCT
 {
         path = 0x0001,
         directory_index = 0x0002,
-        timestamp = 0x003,
+        timestamp = 0x0003,
         size = 0x0004,
         md5 = 0x0005,
         low_user = 0x2000,
